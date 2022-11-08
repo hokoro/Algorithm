@@ -1,16 +1,9 @@
-my_str = input().strip()
-alpha = dict()
-my_str_set = list(set(my_str))
-for c in my_str_set:
-    print(my_str.count(c))
-    alpha[c] = my_str.count(c)
+a = 100
+result = 0
+for i in range(1,3):
+    print(a>>i)
+    result = a >> i
+    result = result + 1
+    print(result)
 
-keys_list = list(alpha.keys())
-count_list = list(alpha.values())
-
-
-
-print(keys_list)
-print(count_list)
-
-print(count_list.index(max(count_list)))
+print(f'최종결과 {result}')
