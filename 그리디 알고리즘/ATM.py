@@ -1,7 +1,6 @@
 people = int(input())
 use_time = list(map(int, input().split()))
 accumulated_time = []
-answer = 0
 sum_time = 0
 use_time.sort()
 
