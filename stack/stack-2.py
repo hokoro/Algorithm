@@ -1,15 +1,28 @@
 def solution(s):
     answer = True
-    in_count = 0
-    out_count = 0
+    letters = []
+    last_token = ""
+    for token in list(s):
+        if last_token == "" and token == ")":
+            answer = False
+            break
+        if last_token == "(" and token == ")":
+            letters.pop(len(letters) - 1)
+            if len(letters) > 0:
+                last_token = letters[len(letters)-1]
+            else:
+                last_token = ""
+            continue
+        last_token = token
+        letters.append(token)
 
-    tokens = list()
-    
-
+    if len(letters) > 0:
+        answer = False
 
     return answer
 
-solution("()()")
-solution("(())()")
-solution("')()('")
-solution("'(()('")
+
+print(solution("()()"))
+print(solution("(())()"))
+print(solution("')()('"))
+print(solution("'(()('"))
