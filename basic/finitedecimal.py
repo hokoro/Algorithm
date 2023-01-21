@@ -1,3 +1,14 @@
+from math import gcd
+
+
 def solution(a, b):
-    answer = 0
-    return answer
+    b //= gcd(a, b)
+    while b % 2 == 0:
+        b //= 2
+    while b % 5 == 0:
+        b //= 5
+    return 1 if b == 1 else 2
+
+
+print(solution(12, 36))
+print(solution(7, 20))
