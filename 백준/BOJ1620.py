@@ -1,11 +1,23 @@
-n, m = map(int, input().split())
-pocketmon_list = []
-for i in range(n+m):
-    s = input()
+import sys
+from collections import defaultdict
+
+n, m = map(int, sys.stdin.readline().split())
+pocketmon_dict = defaultdict()
+reverse_pocketmon_dict = defaultdict()
+answers = []
+for i in range(0, n + m):
     if i < n:
-        pocketmon_list.append(s)
+        monster = sys.stdin.readline().replace('\n', '')
+        pocketmon_dict.setdefault(str(i + 1), monster)
+        reverse_pocketmon_dict.setdefault(monster, str(i + 1))
+        continue
+
     else:
-        if s.isdecimal():
-            print(pocketmon_list[int(s)-1])
+        question = sys.stdin.readline().replace('\n', '')
+        if question.isdigit():
+            answers.append(pocketmon_dict[question])
         else:
-            print(pocketmon_list.index(s)+1)
+            answers.append(reverse_pocketmon_dict[question])
+
+for ans in answers:
+    print(ans, end='\n')
