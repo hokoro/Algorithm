@@ -1,15 +1,14 @@
-import sys
+n = int(input())
 
-N = int(sys.stdin.readline())
-answer = 0
-while N != 1:
-    for i in range(3, 1, -1):
-        target = (N // i) * i
-        answer += (N - target)
-        N = target
-        answer += 1
-        N //= i
+dp = [0 for _ in range(n + 1)]
 
-    answer += (N - 1)
+for i in range(2, n + 1):
+    dp[i] = dp[i - 1] + 1
 
-print(answer)
+    if i % 2 == 0 and dp[i] > dp[i // 2] + 1:
+        dp[i] = dp[i // 2] + 1
+
+    if i % 3 == 0 and dp[i] > dp[i // 3] + 1:
+        dp[i] = dp[i // 3] + 1
+
+print(dp[n])
