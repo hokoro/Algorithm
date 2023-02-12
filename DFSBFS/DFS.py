@@ -1,26 +1,25 @@
-#재귀 함수를 통한 dfs 구현
-def dfs(graph, v, visited):
-    visited[v] = True  # 시작 위치의 노드를 방문함
-    print(v, end=' ')
+def dfs(graph , v,visited):
+    visited[v] = True
+    print(v, end = ' ')
     for i in graph[v]:
-        if not visited[i]:  # 방문하지 않는 노드를 만나면
-            dfs(graph, i, visited)  # 그 노드를 기준으로 dfs 재귀 함수 호출
-
+        if not visited[i]:
+            dfs(graph,i,visited)
 
 graph = [
     [],
-    [2, 3, 8],
-    [1, 7],
-    [1, 4, 5],
-    [3, 5],
-    [3, 4],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
     [7],
-    [2, 6, 8],
-    [1, 7]
+    [2,6,8],
+    [1,7]
 ]
+
 visited = [False] * 9
 
-dfs(graph, 1, visited)
+dfs(graph,1,visited)
 
 
 # dfs 반복을 이용한 구현
