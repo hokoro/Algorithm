@@ -1,17 +1,10 @@
-import math
-
 while True:
-    a,b = map(int,input().split())
-    if a == 0 and b == 0:
+    a, b = map(int, input().split())
+    if (a, b) == (0, 0):
         break
-
-    nums = []
-    for i in range(2,int(math.sqrt(b)+1)):
-        if b % i == 0:
-            nums.append(i)
-            nums.append(b // i)
-        if a in nums:
-            answer = 'factor'
-            break
-
-
+    if a // b > 0 and a % b == 0:
+        print('multiple')
+    elif b // a > 0 and b % a == 0:
+        print('factor')
+    else:
+        print('neither')
