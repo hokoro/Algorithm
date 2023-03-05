@@ -10,6 +10,7 @@ for i in range(len(arr)):
     total += arr[i]
     sum_list.append(total)
 
+print(sum_list)
 for _ in range(M):
     i, j = map(int, input().split())
     print(sum_list[j] - sum_list[i - 1])
