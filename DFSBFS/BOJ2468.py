@@ -1,7 +1,4 @@
 from collections import deque
-import sys
-
-sys.setrecursionlimit(10 ** 7)
 
 dx = [-1, 0, 1, 0]
 dy = dx[::-1]
@@ -33,14 +30,14 @@ def bfs(x, y):
                 visited[nx][ny] = 1
 
 
-for i in range(1, MAX + 1):
+for i in range(MAX):
     count = 0
-    visited = [[0] * n for _ in range(n + 1)]
+    visited = [[0] * n for _ in range(n)]
     for j in range(len(graph)):
         for k in range(len(graph[j])):
             if graph[j][k] > i and visited[j][k] == 0:
-                count += 1
                 bfs(j, k)
+                count += 1
     if max_result < count:
         max_result = count
 
