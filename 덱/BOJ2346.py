@@ -1,30 +1,18 @@
+import sys
 from collections import deque
+input = sys.stdin.readline
 
 n = int(input())
-answer = []
-queue = deque([])
-ballon = []
-nums = list(map(int,input().split()))
-queue.append(nums)
+q = deque(enumerate(map(int, input().split())))
+ans = []
 
-i = 0
-while len(queue) != 0:
-    move = queue.popleft()
-    answer.append(nums.index(move))
-    ballon.append(move)
-    next = 0
-    while True:
-        if nums[i+move] not in ballon:
-            next = nums[i+move]
-        elif nums[i+move] in ballon and move < 0:
-            move -= 1
-            continue
-        else:
-            move += 1
-            continue
-    while True:
-        if queue[0] == next:
-            break
-        queue.append(queue.popleft())
+while q:
+    idx, paper = q.popleft()
+    ans.append(idx + 1)
 
-print(answer)
+    if paper > 0:
+        q.rotate(-(paper - 1))
+    elif paper < 0:
+        q.rotate(-paper)
+
+print(' '.join(map(str, ans)))
